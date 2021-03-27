@@ -1,6 +1,9 @@
 const express = require('express');
 const app = express();
 
+require('dotenv').config()
+
+
 const bodyParser=require("body-parser");
 const cors=require("cors");
 
@@ -8,7 +11,7 @@ const jwt=require("jsonwebtoken");
 
 const mongoose=require('mongoose');
 
-mongoose.connect(`mongodb+srv://Hasan:3107Anees!@todo.yeogc.mongodb.net/todo?retryWrites=true&w=majority`)
+mongoose.connect(process.env.MONGODB_URI)
 
 const port = process.env.PORT || 3030;
 
