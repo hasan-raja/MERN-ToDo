@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 
 interface SignUpProps{
     renderLogin: ()=>void;
@@ -9,7 +10,17 @@ const Signup=({renderLogin}:SignUpProps)=>{
     const [username,setUserName]=React.useState("");
     const [password,setPassword]=React.useState("");
     const [confirmPassword,setConfirmPassword]=React.useState("")
-    const [disable,setDisable]=React.useState(false)
+    const [disable,setDisable]=React.useState(false);
+
+    const onSubmit=()=>{
+        axios.post('http://localhost:3001/signup',{
+            username:username,
+            password:password
+        }).then(res=>{
+            console.log(res);
+            
+        })
+    }
 
     React.useEffect(()=>{
         if(password===confirmPassword) setDisable(false)
@@ -38,7 +49,7 @@ const Signup=({renderLogin}:SignUpProps)=>{
                     <p>Already a member?<span className="text-secondary cursor-pointer" onClick={renderLogin}>Login</span></p>
                 </div>
                 {/* <div className="text-fred">forget password</div> */}
-                <button className={`px-10 py-3 rounded-lg bg-secondary text-fwhite ${disable?"bg-fred":"bg-secondary"}`} disabled={disable}>Sign Up</button>
+                <button className={`px-10 py-3 rounded-lg bg-secondary text-fwhite ${disable?"bg-fred":"bg-secondary"}`} disabled={disable} onClick={()=>onSubmit()}>Sign Up</button>
             </div>
         </div>
     )
