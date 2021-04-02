@@ -13,7 +13,7 @@ const Signup=({renderLogin}:SignUpProps)=>{
     const [disable,setDisable]=React.useState(false);
 
     const onSubmit=()=>{
-        axios.post('http://localhost:3001/signup',{
+        axios.post('/signup',{
             username:username,
             password:password
         }).then(res=>{

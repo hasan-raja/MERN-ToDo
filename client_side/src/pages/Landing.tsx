@@ -1,6 +1,7 @@
 import React from 'react';
 import Login from '../components/auth/Login';
 import Signup from '../components/auth/Signup';
+import Clock from '../components/clock.jsx'
 
 const Landing=()=>{
     const [isSignUp,setIsSignUp]=React.useState<boolean>(false);
@@ -18,7 +19,7 @@ const Landing=()=>{
                 {/* New user?<span onClick={()=>setIsSignUp(true)}>ClicK here</span> */}
                 </div>
             <div className="w-1/2 bg-cover bg-no-repeat bg-Vectorlanding">
-            {n}
+            <Clock/>
             </div>
             
         </div>

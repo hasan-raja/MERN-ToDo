@@ -4,14 +4,17 @@ import './index.css';
 import Landing from './pages/Landing';
 import reportWebVitals from './reportWebVitals';
 import {BrowserRouter} from 'react-router-dom';
-import {Route} from 'react-router'
+import {Route} from 'react-router';
+import RequiredAuth from './components/auth/RequiredAuth';
+import Dashboard from './pages/Dashboard';
 
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
-      <Route path='/' component={Landing}>
+      <Route exact path='/' component={Landing} />
+      <Route path='/dashboard' component={RequiredAuth(Dashboard)}/>
 
-      </Route>
+      
     </BrowserRouter>
     
   </React.StrictMode>,

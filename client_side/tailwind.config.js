@@ -12,7 +12,8 @@ module.exports = {
         secondary:"#5D6DE3",
         fback:"#E5EDEC",
         fred:"#FD5E53",
-        fwhite:"#FFFFFF"
+        fwhite:"#FFFFFF",
+        fblack:"#000000"
       }
     },
     colors: {
