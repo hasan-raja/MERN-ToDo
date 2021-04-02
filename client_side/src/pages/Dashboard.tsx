@@ -20,7 +20,7 @@ const Dashboard=()=>{
         <div className="max-w-md mx-auto pt-12">
             <h1 className="font-bold text-secondary text-center text-xl mb-12">My todoList</h1>
         <ToDoForm todos={todoList} setTodos={setTodoList}/>
-        <ToDoList  todos={todoList}/>
+        <ToDoList  todos={todoList} setTodos={setTodoList}/>
         </div>
         </>
     )

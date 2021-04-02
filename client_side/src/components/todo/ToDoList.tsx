@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 export interface Todo{
     _id:string,
     title:string,
@@ -5,17 +7,29 @@ export interface Todo{
 }
 
 interface TodoListProps{
-    todos:Todo[]
+    todos:Todo[],
+    setTodos:(todos:Todo[])=>void;
 }
 
-const ToDoList=({todos}:TodoListProps)=>{
+const ToDoList=({todos,setTodos}:TodoListProps)=>{
+    const markCompleted = (todo: Todo) => {
+        axios.put(`/todo/${todo._id}`, {}, {headers: { token: localStorage.getItem('token')}})
+          .then(res => {
+            if (res.status === 200) {
+                let _todos = todos;
+                setTodos(_todos.filter(todo => res.data.todo._id !== todo._id));
+              }
+            }
+            
+          );
+      }
     return(
         <>
     {
-        todos.map((todo)=>(
+        todos.filter(todo=>!todo.isCompleted).map((todo)=>(
             <div className="border border-primary p-4 rounded-md m-4 flex justify-between items-center" key={todo._id}>
                 {todo.title}
-                <input type="button" className="py-2 px-3 bg-secondary text-fwhite rounded-md cursor-pointer" value="DONE"/>
+                <input type="button" className="py-2 px-3 bg-secondary text-fwhite rounded-md cursor-pointer" value="DONE" onClick={()=>markCompleted(todo)}/>
             </div>
         ))
     }

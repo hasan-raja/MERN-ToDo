@@ -6,14 +6,11 @@ import Clock from '../components/clock.jsx'
 const Landing=()=>{
     const [isSignUp,setIsSignUp]=React.useState<boolean>(false);
 
-    var d = new Date();
-    var n = d.getTime()
-
-    return(
+       return(
         <div className="flex w-full h-screen bg-fback  rounded-lg">
             <div className="w-1/2 max-w-xs mx-auto relative ">
                 <div className="absolute insert-0 m-auto" >
-                {isSignUp && <Signup renderLogin={()=>setIsSignUp(false)}/> ||<Login renderSignUp={()=>setIsSignUp(true)}/>}
+                {(isSignUp && <Signup renderLogin={()=>setIsSignUp(false)}/>) ||<Login renderSignUp={()=>setIsSignUp(true)}/>}
                 </div>
 
                 {/* New user?<span onClick={()=>setIsSignUp(true)}>ClicK here</span> */}

@@ -12,13 +12,13 @@ const ToDoForm=( {todos,setTodos}:TodoFormProps)=>{
     const onsubmit=()=>{
         if(title.length>0){
             axios.post('todo',{title:title},{headers:{token:localStorage.getItem('token')}})
-            .then(res=>{
-                if(res.status===200){
-                    let todo=res.data.todo;
-                    setTodos([...todos,todo])
-                    setTitle("")
-                }
-            })
+                .then(res=>{
+                    if(res.status===200){
+                        let todo=res.data.todo;
+                        setTodos([...todos,todo])
+                        setTitle("")
+                    }
+                })
         }
     }
 
